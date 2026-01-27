@@ -16,5 +16,27 @@
   },
   "devDependencies": {
     "prisma": "^7.3.0"
-  }
+  },
+  "name": "odin-file-uploader",
+  "version": "1.0.0",
+  "description": "Project: File Uploader from the Odin Project's NodeJS Course",
+  "main": "prisma.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thongster/odin-file-uploader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thongster/odin-file-uploader/issues"
+  },
+  "homepage": "https://github.com/thongster/odin-file-uploader#readme"
 }

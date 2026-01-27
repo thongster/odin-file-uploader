@@ -1,10 +1,10 @@
-import { prisma } from "./lib/prisma";
+const prisma = require("./lib/prisma.js");
 
 async function main() {
   // Fetch all users with their posts
   const allUsers = await prisma.user.findMany({
     include: {
-      posts: true,
+      files: true,
     },
   });
   console.log("All users:", allUsers);
