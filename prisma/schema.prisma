@@ -14,23 +14,24 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  files File[]
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  passwordHash String
+  name         String?
+  files        File[]
 }
 
 model File {
-  id        Int     @id @default(autoincrement())
-  title     String
-  link   String?
-  uploader    User    @relation(fields: [uploaderId], references: [id])
-  uploaderId  Int
+  id         Int     @id @default(autoincrement())
+  title      String
+  link       String?
+  uploader   User    @relation(fields: [uploaderId], references: [id])
+  uploaderId Int
 }
 
 model Session {
   id        String   @id
   sid       String   @unique
-  data      String  
-  expiresAt   DateTime
+  data      String
+  expiresAt DateTime
 }
