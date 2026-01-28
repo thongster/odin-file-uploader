@@ -1,29 +1,156 @@
-h1, h2, h3, h3, p {
-    margin: 0;
-    padding: 0;
+:root {
+  /* XP Core */
+  --xp-bg: #ECE9D8;
+  --xp-panel: #F5F6F7;
+  --xp-border: #7F9DB9;
+
+  /* XP Luna Blues */
+  --xp-blue: #3A6EDC;
+  --xp-blue-dark: #1F4FA3;
+  --xp-blue-light: #BFD6FF;
+
+  /* XP Green Accent */
+  --xp-green: #6FA94A;
+  --xp-green-light: #DFF2D8;
+
+  /* XP Highlights */
+  --xp-highlight: #FFFFFF;
+  --xp-shadow: #9DB9D8;
+
+  /* Text */
+  --xp-text: #000000;
+  --xp-muted: #4A4A4A;
 }
 
+/* Reset */
+h1, h2, h3, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+    height: 100vh;
+}
+
+/* Body = Windows XP Desktop */
 body {
-  background-color: lemonchiffon;
+  background: url("/bliss.jpg");
+  background-position: center;
+  background-size: cover;
+  font-family: Tahoma, Verdana, Segoe UI, system-ui, sans-serif;
+  color: var(--xp-text);
+  font-size: 13px;
+  margin: 0;
+
 }
 
 .container {
-    max-width: 960px;
-    margin: 0 auto;
+  max-width: 960px;
+  margin: 3rem auto;
+  border: 2px solid #4B75C9;
+  border-radius: 7px;
+  background: linear-gradient(#F8FAFF, #E6EEF9);
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1px 0 #9DB9E8,
+    0 5px 10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
 }
 
-.headerLeft {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+/* XP Glossy Title Bar */
+.header {
+  background: linear-gradient(to bottom, #6FA8FF, #245EDC);
+  color: white;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #1C4AA0;
+  border-radius: 6px 6px 0 0;
+  box-shadow:
+    inset 0 1px 0 #A8C4FF,
+    inset 0 -1px 0 #1E4F9A;
 }
 
+/* Header content width */
+.headerInner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Brand row */
+.headerBrand {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 0.75rem;
+}
+
+/* XP Icon */
 .logo img {
-    display: inline-block;
-    max-width: 4rem;
-    max-height: 4rem;
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.35));
 }
 
-.headerText h1 {
-    margin-bottom: 0.25rem;
+/* Title Text */
+.brand-text h1 {
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
+
+.brand-text p {
+  font-size: 12px;
+  color: #DCE9FF;
+}
+
+/* XP Content Panel */
+.panel {
+  background: linear-gradient(#FFFFFF, #ECF3FF);
+  border: 1px solid var(--xp-border);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-highlight),
+    inset -1px -1px 0 #A5C2E8;
+}
+
+/* XP Buttons */
+button {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 3px 16px;
+  border: 1px solid #7A9ACD;
+  border-radius: 3px;
+  background: linear-gradient(#FFFFFF, #D6E6FF);
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1px 0 #9DB9E8,
+    0 1px 0 rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+
+/* Hover = XP Glow */
+button:hover {
+  background: linear-gradient(#F2F7FF, #C5DCFF);
+  border-color: #4F7FD8;
+}
+
+/* Pressed = Inset */
+button:active {
+  background: linear-gradient(#C8DAFF, #FFFFFF);
+  box-shadow:
+    inset 1px 1px 3px rgba(0,0,0,0.25);
+}
+
+/* Optional XP Highlight Block */
+.panel.highlight {
+  background: linear-gradient(#F3FAF0, #DFF2D8);
+  border-color: var(--xp-green);
 }
