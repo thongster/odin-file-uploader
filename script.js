@@ -1,4 +1,4 @@
-const prisma = require("./lib/prisma.js");
+const prisma = require('./lib/prisma.js');
 
 async function main() {
   // Fetch all users with their posts
@@ -7,7 +7,7 @@ async function main() {
       files: true,
     },
   });
-  console.log("All users:", allUsers);
+  console.log('All users:', allUsers);
 }
 
 main()
