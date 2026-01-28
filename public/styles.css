@@ -1,3 +1,29 @@
+h1, h2, h3, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
 body {
   background-color: lemonchiffon;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    display: inline-block;
+    max-width: 4rem;
+    max-height: 4rem;
+}
+
+.headerText h1 {
+    margin-bottom: 0.25rem;
 }
