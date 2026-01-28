@@ -110,17 +110,6 @@ body {
   color: #DCE9FF;
 }
 
-/* XP Content Panel */
-.panel {
-  background: linear-gradient(#FFFFFF, #ECF3FF);
-  border: 1px solid var(--xp-border);
-  border-radius: 4px;
-  padding: 1rem;
-  box-shadow:
-    inset 1px 1px 0 var(--xp-highlight),
-    inset -1px -1px 0 #A5C2E8;
-}
-
 /* XP Buttons */
 button {
   font-family: inherit;
@@ -149,8 +138,83 @@ button:active {
     inset 1px 1px 3px rgba(0,0,0,0.25);
 }
 
+/* XP Content Panel */
+.panel {
+  background: linear-gradient(#FFFFFF, #ECF3FF);
+  border: 1px solid var(--xp-border);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-highlight),
+    inset -1px -1px 0 #A5C2E8;
+}
+
 /* Optional XP Highlight Block */
 .panel.highlight {
   background: linear-gradient(#F3FAF0, #DFF2D8);
   border-color: var(--xp-green);
+}
+
+.mainForm {
+  max-width: 420px;
+  margin: 2rem auto;
+}
+
+.mainForm h2 {
+    margin-bottom: 0.75rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+label {
+  font-size: 12px;
+  color: var(--xp-muted);
+}
+
+input {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 4px 6px;
+  border: 1px solid #7F9DB9;
+  background-color: #FFFFFF;
+  box-shadow:
+    inset 1px 1px 0 #D6E3F8;
+}
+
+input:focus {
+  outline: none;
+  border-color: #316AC5;
+  background-color: #F4F9FF;
+}
+
+.formActions {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 1rem;
+  }
+
+  .mainForm {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .container {
+    margin: 3rem 1rem;
+  }
 }
