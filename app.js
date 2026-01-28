@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true })); // parse form info
 
 // import routers
 const indexRouter = require('./routes/indexRouter');
+const authRouter = require('./routes/authRouter');
 
 // set up sessions and passport
 const passport = require('./config/passport');
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', indexRouter);
+app.use('/login', authRouter);
 
 // error handling
 app.use((req, res) => {
