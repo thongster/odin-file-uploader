@@ -3,6 +3,7 @@ require("dotenv").config();
 const path = require("node:path");
 const express = require("express");
 const session = require("express-session");
+const prisma = require("./lib/prisma.js");
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const app = express();
 
@@ -15,12 +16,10 @@ app.use(express.static(path.join(__dirname, "public"))); // load static files
 app.use(express.urlencoded({ extended: true })); // parse form info
 
 // import routers
-const authRouter = require("./routes/authRouter");
+const indexRouter = require("./routes/indexRouter");
 
 // set up sessions and passport
-const passport = require("./config/passport");
-const messageRouter = require("./routes/messageRouter");
-const roleRouter = require("./routes/roleRouter");
+// const passport = require("./config/passport");
 
 app.use(
   session({
