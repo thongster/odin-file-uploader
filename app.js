@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true })); // parse form info
 const indexRouter = require("./routes/indexRouter");
 
 // set up sessions and passport
-// const passport = require("./config/passport");
+const passport = require("./config/passport");
 
 app.use(
   session({

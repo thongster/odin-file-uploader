@@ -1,5 +1,5 @@
-// const db = require("../db/pool.js");
-// const passport = require("../config/passport");
+const prisma = require("../lib/prisma");
+const passport = require("../config/passport");
 const bcrypt = require("bcryptjs");
 
 // express validator
