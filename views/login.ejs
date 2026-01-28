@@ -10,7 +10,25 @@
   <body>
     <div class="container">
         <%- include('partials/header.ejs') %>
-        <h2></h2>
+        <div class="mainForm panel">
+            <h2>Log In</h2>
+
+            <form action="/login" method="POST" class="loginForm">
+                <div class="formRow">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required />
+                </div>
+
+                <div class="formRow">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required />
+                </div>
+
+                <div class="formActions">
+                <button type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
     </div>
   </body>
 </html>
