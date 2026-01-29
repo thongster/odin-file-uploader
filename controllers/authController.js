@@ -5,6 +5,48 @@ const bcrypt = require('bcryptjs');
 // express validator
 const { body, validationResult, matchedData } = require('express-validator');
 
+const validateSignUp = [
+  body('username')
+    .trim()
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('Must be a valid email address')
+    .normalizeEmail()
+    .isLength({ max: 255 })
+    .withMessage('Email is too long'),
+  body('password')
+    .notEmpty()
+    .withMessage('Password is required')
+    .isLength({ min: 6, max: 100 })
+    .withMessage('Password must be at least 6 characters'),
+  body('confirmPassword')
+    .notEmpty()
+    .withMessage('Password confirmation is required')
+    .bail()
+    .custom((value, { req }) => {
+      return value === req.body.password;
+    })
+    .withMessage('Passwords do not match'),
+];
+
+const validateLogin = [
+  body('username')
+    .trim()
+    .notEmpty()
+    .withMessage('Email is required')
+    .isEmail()
+    .withMessage('Must be a valid email address')
+    .normalizeEmail()
+    .isLength({ max: 255 })
+    .withMessage('Email is too long'),
+  body('password')
+    .notEmpty()
+    .withMessage('Password is required')
+    .isLength({ min: 6, max: 100 })
+    .withMessage('Password must be at least 6 characters'),
+];
+
 const showLogin = async (req, res) => {
   res.render('login');
 };
@@ -13,4 +55,4 @@ const showSignUp = async (req, res) => {
   res.render('signup');
 };
 
-module.exports = { showLogin, showSignUp };
+module.exports = { showLogin, showSignUp, validateSignUp, validateLogin };
