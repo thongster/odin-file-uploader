@@ -3,6 +3,6 @@ const uploadRouter = Router();
 const uploadController = require('../controllers/uploadController');
 
 uploadRouter.get('/upload', uploadController.showUpload);
-uploadRouter.post('/upload', uploadController.upload);
+// uploadRouter.post('/upload', uploadController.upload);
 
 module.exports = uploadRouter;

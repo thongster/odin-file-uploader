@@ -2,7 +2,7 @@ const prisma = require('../lib/prisma');
 
 const showUpload = async (req, res) => {
   if (!req.isAuthenticated()) {
-    res.redirect('/');
+    return res.redirect('/');
   }
   res.render('upload');
 };
