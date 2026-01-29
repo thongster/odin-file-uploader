@@ -32,9 +32,6 @@ const validateSignUp = [
 
 const validateLogin = [
   body('username')
-    .trim()
-    .notEmpty()
-    .withMessage('Email is required')
     .isEmail()
     .withMessage('Must be a valid email address')
     .normalizeEmail()
@@ -94,7 +91,43 @@ const showSignUp = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  res.render('signup');
+  if (req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('signup', {
+      status: errors.array(),
+      formData: req.body,
+    });
+  }
+
+  const { email, password } = matchedData(req);
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await prisma.user.create({
+      data: {
+        email: email,
+        passwordHash: hashedPassword,
+      },
+    });
+    res.redirect('/');
+  } catch (error) {
+    if (error.code === 'P2002') {
+      return res.status(400).render('signup', {
+        status: [{ msg: 'Email already in use.' }],
+        formData: req.body,
+      });
+    }
+
+    console.error(error);
+    return res.status(500).render('signup', {
+      status: [{ msg: 'Something went wrong. Please try again.' }],
+      formData: req.body,
+    });
+  }
 };
 
 module.exports = { showLogin, showSignUp, validateSignUp, validateLogin, login, signup };

@@ -6,11 +6,11 @@ const prisma = require('../lib/prisma');
 passport.use(
   new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
     try {
-      const user = await prisma.findUnique(email);
+      const user = await prisma.user.findUnique({ where: { email } });
 
       // if user does not exist
       if (!user) {
-        return done(null, false, { message: 'Incorrect username' });
+        return done(null, false, { message: 'Incorrect email' });
       }
 
       // password match
@@ -34,7 +34,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await prisma.findUnique(id);
+    const user = await prisma.user.findUnique({ where: { id } });
 
     done(null, user);
   } catch (err) {
