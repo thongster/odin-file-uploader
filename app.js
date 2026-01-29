@@ -42,7 +42,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', indexRouter);
-app.use('/login', authRouter);
+app.use('/', authRouter);
 
 // error handling
 app.use((req, res) => {

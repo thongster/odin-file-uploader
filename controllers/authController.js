@@ -9,4 +9,8 @@ const showLogin = async (req, res) => {
   res.render('login');
 };
 
-module.exports = { showLogin };
+const showSignUp = async (req, res) => {
+  res.render('signup');
+};
+
+module.exports = { showLogin, showSignUp };
