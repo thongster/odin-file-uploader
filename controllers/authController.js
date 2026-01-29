@@ -48,11 +48,53 @@ const validateLogin = [
 ];
 
 const showLogin = async (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.render('/');
+  }
   res.render('login');
 };
 
+const login = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('login', {
+      status: errors.array(),
+      formData: req.body,
+    });
+  }
+
+  passport.authenticate('local', (err, user, info) => {
+    // if database error or server fail
+    if (err) {
+      return next(err);
+    }
+
+    // if user does not match
+    if (!user) {
+      return res.status(401).render('login', {
+        status: [{ msg: info?.message }],
+        formData: req.body,
+      });
+    }
+
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect('/');
+    });
+  })(req, res, next);
+};
+
 const showSignUp = async (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.render('/');
+  }
   res.render('signup');
 };
 
-module.exports = { showLogin, showSignUp, validateSignUp, validateLogin };
+const signup = async (req, res) => {
+  res.render('signup');
+};
+
+module.exports = { showLogin, showSignUp, validateSignUp, validateLogin, login, signup };

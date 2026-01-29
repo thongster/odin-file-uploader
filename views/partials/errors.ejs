@@ -1,0 +1,9 @@
+<% if (locals.status) { %>
+  <div class="">
+    <ul class="">
+      <% status.forEach((state) => { %>
+        <li class="\"><%= state.msg %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
