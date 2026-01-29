@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const { body, validationResult, matchedData } = require('express-validator');
 
 const validateSignUp = [
-  body('username')
+  body('email')
     .trim()
     .notEmpty()
     .withMessage('Email is required')
@@ -20,7 +20,7 @@ const validateSignUp = [
     .withMessage('Password is required')
     .isLength({ min: 6, max: 100 })
     .withMessage('Password must be at least 6 characters'),
-  body('confirmPassword')
+  body('confirmpassword')
     .notEmpty()
     .withMessage('Password confirmation is required')
     .bail()
@@ -31,7 +31,9 @@ const validateSignUp = [
 ];
 
 const validateLogin = [
-  body('username')
+  body('email')
+    .trim()
+    .notEmpty()
     .isEmail()
     .withMessage('Must be a valid email address')
     .normalizeEmail()
@@ -46,7 +48,7 @@ const validateLogin = [
 
 const showLogin = async (req, res) => {
   if (req.isAuthenticated()) {
-    return res.render('/');
+    return res.redirect('/');
   }
   res.render('login');
 };
@@ -85,7 +87,7 @@ const login = async (req, res, next) => {
 
 const showSignUp = async (req, res) => {
   if (req.isAuthenticated()) {
-    return res.render('/');
+    return res.redirect('/');
   }
   res.render('signup');
 };

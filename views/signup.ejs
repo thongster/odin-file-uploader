@@ -14,7 +14,7 @@
             <%- include("partials/errors.ejs") %>
             <h2>Sign Up</h2>
 
-            <form action="/sign" method="POST" class="loginForm">
+            <form action="/signup" method="POST" class="loginForm">
                 <div class="formRow">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" required />
@@ -23,6 +23,11 @@
                 <div class="formRow">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" required />
+                </div>
+
+                <div class="formRow">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" name="confirmpassword" id="confirmpassword" required />
                 </div>
 
                 <div class="formActions">
