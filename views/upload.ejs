@@ -14,13 +14,13 @@
             <%- include("partials/errors.ejs") %>
             <h2>Upload File</h2>
 
-            <form action="/upload_page.php" method="post" enctype="multipart/form-data" class="loginForm">
+            <form action="/upload" method="post" enctype="multipart/form-data" class="loginForm">
                 <div class="formRow">
                     <label for="file">Choose file to upload:</label>
-                    <input type="file" id="file" name="fileToUpload">
+                    <input type="file" id="file" name="file">
                 </div>
                 <div class="formActions">
-                    <input type="submit" value="Upload File">
+                    <button type="submit">Submit File</button>
                 </div>
             </form>
         </div>
