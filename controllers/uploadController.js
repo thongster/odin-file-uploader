@@ -2,6 +2,20 @@ const prisma = require('../lib/prisma');
 const multer = require('multer');
 const path = require('path');
 
+// express validator
+const { body, validationResult, matchedData } = require('express-validator');
+const validateFolderName = [
+  body('folderName')
+    .trim()
+    .notEmpty()
+    .withMessage('Folder name is required')
+    .matches(/^[a-zA-Z0-9 _\-()]+$/)
+    .withMessage(
+      'Folder name can only contain letters, numbers, spaces, hyphens, underscores, and parentheses'
+    ),
+];
+
+// multer config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const folder = req.body.folderId;
@@ -63,11 +77,23 @@ const upload = async (req, res) => {
 };
 
 const createFolder = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('index', {
+      status: errors.array(),
+      formData: req.body,
+    });
+  }
+
+  const { folderName } = matchedData(req);
+
   await prisma.folder.create({
     data: {
-      name: req.body.folderName,
+      name: folderName,
     },
   });
+
+  res.render('index');
 };
 
-module.exports = { showUpload, upload, uploadMulter };
+module.exports = { showUpload, upload, uploadMulter, validateFolderName, createFolder };
