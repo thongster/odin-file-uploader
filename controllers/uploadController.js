@@ -93,7 +93,7 @@ const createFolder = async (req, res) => {
     },
   });
 
-  res.render('index');
+  res.redirect('/');
 };
 
 module.exports = { showUpload, upload, uploadMulter, validateFolderName, createFolder };

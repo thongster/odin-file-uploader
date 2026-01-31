@@ -13,7 +13,7 @@
         <%- include("partials/header.ejs") %>
         <%- include("partials/errors.ejs") %>
         <%- include("partials/createFolderModal.ejs") %>
-        <div>
+        <div class="folderContainer">
             <% folders.forEach((folder) => { %>
                 <div class="folder">
                     <img src="folder.png" alt=<%= folder.name %>>
