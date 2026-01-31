@@ -59,6 +59,7 @@ body {
     inset -1px -1px 0 #9DB9E8,
     0 5px 10px rgba(0, 0, 0, 0.35);
   overflow: hidden;
+  position: relative;
 }
 
 /* XP Glossy Title Bar */
@@ -243,9 +244,36 @@ input:focus {
   text-decoration: underline;
 }
 
+/* Create Folder Modal */
+
 #createFolderModal {
-    display: none;
+  display: none;
+
+  position: absolute;
+  right: 10px;
+  width: 360px;
+
+  background: linear-gradient(
+    to bottom,
+    var(--xp-panel),
+    var(--xp-bg)
+  );
+
+  border: 2px solid var(--xp-border);
+  border-radius: 5px;
+
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1px 0 #9DB9E8,
+    0 2px 4px rgba(0, 0, 0, 0.35);
+
+  z-index: 9999;
 }
+
+#createFolderModal h3 {
+    margin-bottom: 0.3rem;
+}
+
 
 @media (max-width: 480px) {
   .container {
