@@ -37,7 +37,7 @@ const showUpload = async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/');
   }
-  res.render('upload');
+  return res.render('upload');
 };
 
 const upload = async (req, res) => {
@@ -67,10 +67,10 @@ const upload = async (req, res) => {
         folderId: folderId,
       },
     });
-    res.redirect('/');
+    return res.redirect('/');
   } catch (error) {
     console.log(error);
-    res.status(500).render('upload', {
+    return res.status(500).render('upload', {
       status: [{ msg: 'Upload failed' }],
     });
   }
@@ -94,7 +94,7 @@ const createFolder = async (req, res) => {
     },
   });
 
-  res.redirect('/');
+  return res.redirect('/');
 };
 
 module.exports = { showUpload, upload, uploadMulter, validateFolderName, createFolder };

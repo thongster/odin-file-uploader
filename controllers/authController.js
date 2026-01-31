@@ -50,7 +50,7 @@ const showLogin = async (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect('/');
   }
-  res.render('login');
+  return res.render('login');
 };
 
 const login = async (req, res, next) => {
@@ -89,7 +89,7 @@ const showSignUp = async (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect('/');
   }
-  res.render('signup');
+  return res.render('signup');
 };
 
 const signup = async (req, res) => {
@@ -115,7 +115,7 @@ const signup = async (req, res) => {
         passwordHash: hashedPassword,
       },
     });
-    res.redirect('/');
+    return res.redirect('/');
   } catch (error) {
     if (error.code === 'P2002') {
       return res.status(400).render('signup', {
@@ -132,4 +132,13 @@ const signup = async (req, res) => {
   }
 };
 
-module.exports = { showLogin, showSignUp, validateSignUp, validateLogin, login, signup };
+const signout = async (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    return res.redirect('/');
+  });
+};
+
+module.exports = { showLogin, showSignUp, validateSignUp, validateLogin, login, signup, signout };

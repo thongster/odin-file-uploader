@@ -1,10 +1,11 @@
 const prisma = require('../lib/prisma');
 
 const showIndex = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.render('index');
+  }
   const folders = await prisma.folder.findMany({});
-  console.log(folders);
-  console.log(req.user);
-  res.render('index', { folders });
+  return res.render('index', { folders });
 };
 
 const showFolder = async (req, res) => {
@@ -17,7 +18,7 @@ const showFolder = async (req, res) => {
     },
   });
 
-  res.render('files', { folder });
+  return res.render('files', { folder });
 };
 
 module.exports = { showIndex, showFolder };

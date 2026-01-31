@@ -14,14 +14,16 @@
         <%- include("partials/errors.ejs") %>
         <%- include("partials/createFolderModal.ejs") %>
         <div class="folderContainer">
-            <% folders.forEach((folder) => { %>
-                <a href="/<%= folder.name %>" class="folderLink">
-                    <div class="folder">
-                        <img src="/folder.png" alt="<%= folder.name %>">
-                        <span class="folderName"><%= folder.name %></span>
-                    </div>
-                </a>
-            <% }) %>
+            <% if (locals.folders) { %>
+                <% folders.forEach((folder) => { %>
+                    <a href="/<%= folder.name %>" class="folderLink">
+                        <div class="folder">
+                            <img src="/folder.png" alt="<%= folder.name %>">
+                            <span class="folderName"><%= folder.name %></span>
+                        </div>
+                    </a>
+                <% }) %>
+            <% } %>
         </div>
         <%- include("partials/footer.ejs") %>
     </div>
