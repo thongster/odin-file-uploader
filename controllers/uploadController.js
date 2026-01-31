@@ -4,7 +4,13 @@ const path = require('path');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../uploads'));
+    const folder = req.body.folderId;
+
+    if (folder) {
+      cb(null, path.join(__dirname, `../uploads/${folder}`));
+    } else {
+      cb(null, path.join(__dirname, '../uploads'));
+    }
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -35,11 +41,16 @@ const upload = async (req, res) => {
       });
     }
 
+    const folderId = req.body.folderId || null;
+
     await prisma.file.create({
       data: {
         title: file.originalname,
         link: file.path,
+        mimetype: file.mimetype,
+        size: file.size,
         uploaderId: req.user.id,
+        folderId: folderId,
       },
     });
     res.redirect('/');
@@ -49,6 +60,14 @@ const upload = async (req, res) => {
       status: [{ msg: 'Upload failed' }],
     });
   }
+};
+
+const createFolder = async (req, res) => {
+  await prisma.folder.create({
+    data: {
+      name: req.body.folderName,
+    },
+  });
 };
 
 module.exports = { showUpload, upload, uploadMulter };
