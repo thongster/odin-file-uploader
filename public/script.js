@@ -2,6 +2,7 @@ const openFolderBtn = document.getElementById('openCreateFolder');
 const createFolderBtn = document.getElementById('createFolderBtn');
 const createFolderModal = document.getElementById('createFolderModal');
 
+// disable/enable view of new folder modal
 let isFolderModalOpen = false;
 
 openFolderBtn.addEventListener('click', () => {
@@ -13,6 +14,7 @@ createFolderBtn.addEventListener('click', () => {
   createFolderModal.style.display = 'none';
 });
 
+// measure header height to display newfolder modal nicely
 const header = document.querySelector('.header');
 
 function updateModalOffset() {
@@ -22,3 +24,16 @@ function updateModalOffset() {
 
 updateModalOffset();
 window.addEventListener('resize', updateModalOffset);
+
+// folder double click
+const allFolders = document.querySelectorAll('.folderLink');
+
+allFolders.forEach((folder) => {
+  folder.addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+
+  folder.addEventListener('dblclick', () => {
+    window.location.href = folder.href;
+  });
+});

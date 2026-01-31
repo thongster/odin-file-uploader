@@ -326,6 +326,10 @@ input:focus {
   border-color: #4F7FD8;
 }
 
+.folderLink {
+    text-decoration: none;
+}
+
 
 @media (max-width: 480px) {
   .container {
