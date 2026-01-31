@@ -243,6 +243,9 @@ input:focus {
   text-decoration: underline;
 }
 
+#createFolderModal {
+    display: none;
+}
 
 @media (max-width: 480px) {
   .container {

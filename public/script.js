@@ -1,10 +1,15 @@
 const openFolderBtn = document.getElementById('openCreateFolder');
 const createFolderBtn = document.getElementById('createFolder');
+const createFolderModal = document.getElementById('createFolderModal');
 
 openFolderBtn.addEventListener('click', () => {
-  document.getElementById('createFolderModal').style.display = 'flex';
+  if (createFolderModal.style.display === 'none') {
+    createFolderModal.style.display = 'flex';
+  } else {
+    createFolderModal.style.display = 'none';
+  }
 });
 
 createFolderBtn.addEventListener('click', () => {
-  document.getElementById('createFolderModal').style.display = 'none';
+  createFolderModal.style.display = 'none';
 });
