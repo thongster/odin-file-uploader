@@ -16,8 +16,8 @@
         <div class="folderContainer">
             <% folders.forEach((folder) => { %>
                 <div class="folder">
-                    <img src="folder.png" alt=<%= folder.name %>>
-                    <%= folder.name %>
+                    <img src="/folder.png" alt="<%= folder.name %>">
+                    <span class="folderName"><%= folder.name %></span>
                 </div>
             <% }) %>
         </div>
