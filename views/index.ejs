@@ -11,6 +11,14 @@
     <div class="container">
         <%- include("partials/header.ejs") %>
         <%- include("partials/errors.ejs") %>
+        <div>
+            <% folders.forEach((folder) => { %>
+                <div class="folder">
+                    <img src="folder.png" alt=<%= folder.name %>>
+                    <%= folder.name %>
+                </div>
+            <% }) %>
+        </div>
     </div>
   </body>
 </html>
