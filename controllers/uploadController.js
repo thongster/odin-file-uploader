@@ -90,6 +90,7 @@ const createFolder = async (req, res) => {
   await prisma.folder.create({
     data: {
       name: folderName,
+      ownerId: req.user.id,
     },
   });
 
