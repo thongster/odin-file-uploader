@@ -90,6 +90,11 @@ body {
   gap: 0.75rem;
 }
 
+.headerRight {
+    display: flex;
+    gap: 1rem;
+}
+
 /* XP Icon */
 .logo img {
   display: block;
