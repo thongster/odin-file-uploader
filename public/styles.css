@@ -50,6 +50,7 @@ body {
 
 .container {
   max-width: 960px;
+  min-height: 100%;
   margin: 3rem auto;
   border: 2px solid #4B75C9;
   border-radius: 7px;

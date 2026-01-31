@@ -2,12 +2,11 @@ const openFolderBtn = document.getElementById('openCreateFolder');
 const createFolderBtn = document.getElementById('createFolderBtn');
 const createFolderModal = document.getElementById('createFolderModal');
 
+let isFolderModalOpen = false;
+
 openFolderBtn.addEventListener('click', () => {
-  if (createFolderModal.style.display == 'none') {
-    createFolderModal.style.display = 'flex';
-  } else {
-    createFolderModal.style.display = 'none';
-  }
+  isFolderModalOpen = !isFolderModalOpen;
+  createFolderModal.style.display = isFolderModalOpen ? 'flex' : 'none';
 });
 
 createFolderBtn.addEventListener('click', () => {
