@@ -1,10 +1,26 @@
 <div class="directoryBar">
-    <div class="directoryInner">
-        <button>Back</button>
-        <% if (locals.folder) { %> 
-            <span><%= folder.name %></span>
-        <% } else { %>
-            <span>Root</span>
-        <% } %>
+  <div class="directoryInner">
+
+    <div class="navGroup">
+      <button id="backBtn" class="navBtn">Back</button>
     </div>
+
+    <div class="pathBox">
+      <% if (locals.folder) { %> 
+        <span class="pathText"><%= folder.name %></span>
+      <% } else { %>
+        <span class="pathText">Root</span>
+      <% } %>
+    </div>
+
+    <div class="actionGroup">
+      <% if (locals.folder) { %>
+        <button id="renameThisFolder" class="navBtn">Rename</button>
+        <button id="deleteThisFolder" class="navBtn danger">Delete</button>
+      <% } else { %>
+        <button id="openCreateFolder" class="navBtn">New Folder</button>
+      <% } %>
+    </div>
+
+  </div>
 </div>
