@@ -16,7 +16,7 @@
         <div class="folderContainer">
             <% if (locals.folders) { %>
                 <% folders.forEach((folder) => { %>
-                    <a href="/<%= folder.name %>" class="folderLink">
+                    <a href="/folders/<%= folder.name %>" class="folderLink">
                         <div class="folder">
                             <img src="/folder.png" alt="<%= folder.name %>">
                             <span class="folderName"><%= folder.name %></span>

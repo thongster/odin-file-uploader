@@ -2,7 +2,6 @@ const { Router } = require('express');
 const authRouter = Router();
 const authController = require('../controllers/authController');
 
-// /login
 authRouter.get('/login', authController.showLogin);
 authRouter.post('/login', authController.validateLogin, authController.login);
 

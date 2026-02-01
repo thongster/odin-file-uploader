@@ -18,7 +18,7 @@ const showFolder = async (req, res) => {
     },
   });
 
-  return res.render('files', { folder });
+  return res.render('folders', { folder });
 };
 
 module.exports = { showIndex, showFolder };
