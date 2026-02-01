@@ -423,7 +423,7 @@ input:focus {
 }
 
 .xpError {
-  margin: 10px;
+  margin: 0.5rem 1rem 1.5rem 1rem;
   border: 1px solid #9C6A6A;
   background: linear-gradient(#FFF1F1, #FFD6D6);
   border-radius: 4px;
@@ -434,14 +434,14 @@ input:focus {
 
 .xpErrorInner {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   padding: 10px 12px;
 }
 
 .xpErrorIcon img {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   image-rendering: pixelated;
 }
 
