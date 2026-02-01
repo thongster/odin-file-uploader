@@ -83,7 +83,7 @@ const upload = async (req, res) => {
         folderId: folderId,
       },
     });
-    return res.redirect('/');
+    return res.redirect(req.body.folder === 'None' ? '/' : `/folders/${req.body.folder}`);
   } catch (error) {
     console.log(error);
     return res.status(500).render('upload', {

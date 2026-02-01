@@ -23,7 +23,13 @@ const showFolder = async (req, res) => {
     },
   });
 
-  return res.render('folders', { folder });
+  const files = await prisma.file.findMany({
+    where: {
+      folderId: folder.id,
+    },
+  });
+
+  return res.render('folders', { folder, files });
 };
 
 module.exports = { showIndex, showFolder };
