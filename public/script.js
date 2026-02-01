@@ -37,3 +37,12 @@ allFolders.forEach((folder) => {
     window.location.href = folder.href;
   });
 });
+
+// icon double click
+const allIcons = document.querySelectorAll('.iconLink');
+
+allIcons.forEach((icon) => {
+  icon.addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+});

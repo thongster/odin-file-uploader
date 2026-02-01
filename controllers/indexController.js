@@ -5,7 +5,12 @@ const showIndex = async (req, res) => {
     return res.render('index');
   }
   const folders = await prisma.folder.findMany({});
-  return res.render('index', { folders });
+  const files = await prisma.file.findMany({
+    where: {
+      folderId: null,
+    },
+  });
+  return res.render('index', { folders, files });
 };
 
 const showFolder = async (req, res) => {

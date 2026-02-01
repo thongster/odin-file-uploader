@@ -24,6 +24,16 @@
                     </a>
                 <% }) %>
             <% } %>
+            <% if (locals.files) { %> 
+                <% files.forEach((file) => { %>
+                    <a href="" class="folderLink">
+                        <div class="folder">
+                            <img src="/folder.png" alt="<%= file.title %>">
+                            <span class="folderName"><%= file.title %></span>
+                        </div>
+                    </a>
+                <% }) %>
+            <% } %>
         </div>
         <%- include("partials/footer.ejs") %>
     </div>
