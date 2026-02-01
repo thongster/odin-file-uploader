@@ -1,12 +1,38 @@
 <div class="detailModal">
-    <div class="detailInner">
-        <h3><%= file.title %> Details</h3>
-        <%= file.id %>
-        <%= file.link %>
-        <%= file.mimetype %>
-        <%= file.size %>
-        <%= file.createdAt %>
-        <%= file.uploader %>
-        <%= file.folder %>
+  <div class="detailWindow">
+
+    <div class="titleBar">
+      <span class="titleText"><%= file.title %> Properties</span>
+      <button class="closeButton">×</button>
     </div>
+
+    <div class="detailContent">
+
+      <div class="detailRow">
+        <span class="label">Type:</span>
+        <span class="value"><%= file.mimeType %></span>
+      </div>
+
+      <div class="detailRow">
+        <span class="label">Size:</span>
+        <span class="value"><%= Math.round(file.size / 1024) %> KB</span>
+      </div>
+
+      <div class="detailRow">
+        <span class="label">Location:</span>
+        <span class="value"><%= file.folder ? file.folder.name : 'Root' %></span>
+      </div>
+
+      <div class="detailRow">
+        <span class="label">Created:</span>
+        <span class="value"><%= file.createdAt.toLocaleString() %></span>
+      </div>
+
+    </div>
+
+    <div class="detailFooter">
+      <button>OK</button>
+    </div>
+
+  </div>
 </div>
