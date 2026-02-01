@@ -47,6 +47,7 @@
                             <span class="fileName"><%= file.title %></span>
                         </div>
                     </a>
+                    <%- include("partials/fileDetails.ejs", { file }) %>
                 <% }) %>
             <% } %>
         </div>

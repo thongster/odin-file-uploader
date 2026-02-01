@@ -46,3 +46,15 @@ allIcons.forEach((icon) => {
     e.preventDefault();
   });
 });
+
+// disable/enable view of file details modal
+let isFileDetailOpen = false;
+
+openFolderBtn.addEventListener('click', () => {
+  isFileDetailOpen = !isFileDetailOpen;
+  createFolderModal.style.display = isFileDetailOpen ? 'flex' : 'none';
+});
+
+createFolderBtn.addEventListener('click', () => {
+  createFolderModal.style.display = 'none';
+});
