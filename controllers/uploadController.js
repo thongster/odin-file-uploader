@@ -58,7 +58,20 @@ const upload = async (req, res) => {
       });
     }
 
-    const folderId = req.body.folderId || null;
+    let folderId = null;
+
+    if (req.body.folder !== 'None') {
+      const folder = await prisma.folder.findUnique({
+        where: {
+          ownerId_name: {
+            ownerId: req.user.id,
+            name: req.body.folder,
+          },
+        },
+      });
+
+      folderId = folder.id;
+    }
 
     await prisma.file.create({
       data: {

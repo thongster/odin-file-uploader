@@ -19,6 +19,7 @@
                 <div class="formRow">
                     <label for="folder">Folder to upload to:</label>
                     <select name="folder">
+                        <option value="None">None</option>
                         <% folders.forEach((folder) => { %>
                             <option value="<%= folder.name %>"><%= folder.name %></option>
                         <% }) %>
