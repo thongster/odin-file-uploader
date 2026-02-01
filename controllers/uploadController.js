@@ -37,7 +37,10 @@ const showUpload = async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/');
   }
-  return res.render('upload');
+
+  const folders = await prisma.folder.findMany({});
+
+  return res.render('upload', { folders });
 };
 
 const upload = async (req, res) => {
@@ -61,7 +64,7 @@ const upload = async (req, res) => {
       data: {
         title: file.originalname,
         link: file.path,
-        mimetype: file.mimetype,
+        mimeType: file.mimetype,
         size: file.size,
         uploaderId: req.user.id,
         folderId: folderId,

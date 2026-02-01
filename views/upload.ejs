@@ -17,6 +17,14 @@
 
             <form action="/upload" method="post" enctype="multipart/form-data" class="loginForm">
                 <div class="formRow">
+                    <label for="folder">Folder to upload to:</label>
+                    <select name="folder">
+                        <% folders.forEach((folder) => { %>
+                            <option value="<%= folder.name %>"><%= folder.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="formRow">
                     <label for="file">Choose file to upload:</label>
                     <input type="file" id="file" name="file">
                 </div>
