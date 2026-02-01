@@ -333,24 +333,24 @@ input:focus {
 .detailModal {
   position: fixed;
   inset: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
 
 .detailWindow {
-  width: 360px;
+  width: clamp(300px, 35%, 450px);
   background: var(--xp-panel);
   border: 2px solid var(--xp-border);
   border-radius: 6px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
   font-size: 13px;
 }
 
 /* XP Blue Title Bar */
 .titleBar {
-  height: 28px;
+  height: 1.75rem;
   background: linear-gradient(#6FA8FF, #245EDC);
   color: white;
   padding: 0 8px;
