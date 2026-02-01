@@ -26,10 +26,25 @@
             <% } %>
             <% if (locals.files) { %> 
                 <% files.forEach((file) => { %>
-                    <a href="" class="folderLink">
-                        <div class="folder">
-                            <img src="/folder.png" alt="<%= file.title %>">
-                            <span class="folderName"><%= file.title %></span>
+                    <%
+                        const ext = file.title.split('.').pop().toLowerCase();
+                        const imageTypes = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+                        const textTypes = ['txt', 'md', 'doc', 'docx', 'rtf'];
+
+                        let icon = '/fileicon.png';
+
+                        if (imageTypes.includes(ext)) {
+                            icon = '/photoicon.png';
+                        } else if (textTypes.includes(ext)) {
+                            icon = '/wordicon.png';
+                        } else {
+                            icon = '/fileicon.png'
+                        }
+                    %>
+                    <a href="" class="iconLink">
+                        <div class="file">
+                            <img src="<%= icon %>" alt="<%= file.title %>">
+                            <span class="fileName"><%= file.title %></span>
                         </div>
                     </a>
                 <% }) %>
