@@ -1,0 +1,14 @@
+<div id="renameFolderModal" class="folderModal">
+    <div class="mainForm">
+        <h3>Rename Folder</h3>
+        <form action="/folder/<%= folder.title %>/rename" method="POST" class="loginForm">
+            <div class="formRow">
+                <label for="folderName">Folder Name:</label>
+                <input type="text" name="folderName" value="<%= folder.name %>">
+            </div>
+            <div class="formActions">
+                <button type="submit" id="renameFolderBtn">Rename Folder</button>
+            </div>
+        </form>
+    </div>
+</div>

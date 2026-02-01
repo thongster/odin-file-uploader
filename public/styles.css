@@ -247,8 +247,12 @@ input:focus {
 
 /* Create Folder Modal */
 
-#createFolderModal {
+#createFolderModal, #deleteFolderModal, #renameFolderModal {
   display: none;
+}
+
+.folderModal {
+  display: flex;
 
   position: absolute;
   right: 10px;
@@ -271,9 +275,11 @@ input:focus {
   z-index: 9999;
 }
 
-#createFolderModal h3 {
+.folderModal h3 {
     margin-bottom: 0.3rem;
 }
+
+
 
 .folderContainer {
   display: grid;
