@@ -45,17 +45,21 @@ allIcons.forEach((icon) => {
   icon.addEventListener('click', (e) => {
     e.preventDefault();
   });
-  const modal = icon.nextElementSibling;
-  let isFileDetailOpen = false;
 
   icon.addEventListener('dblclick', (e) => {
     e.preventDefault();
+    const modal = icon.nextElementSibling;
+    let isFileDetailOpen = false;
     isFileDetailOpen = !isFileDetailOpen;
 
     modal.style.display = isFileDetailOpen ? 'flex' : 'none';
   });
 });
 
-// createFolderBtn.addEventListener('click', () => {
-//   createFolderModal.style.display = 'none';
-// });
+const allCloseBtns = document.querySelectorAll('.closeAction');
+allCloseBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const modal = btn.closest('.detailModal');
+    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+  });
+});
