@@ -1,0 +1,10 @@
+<div class="directoryBar">
+    <div class="directoryInner">
+        <button>Back</button>
+        <% if (locals.folder) { %> 
+            <span><%= folder.name %></span>
+        <% } else { %>
+            <span>Root</span>
+        <% } %>
+    </div>
+</div>
