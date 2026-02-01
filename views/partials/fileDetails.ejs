@@ -28,7 +28,10 @@
         <span class="value"><%= file.createdAt.toLocaleString() %></span>
       </div>
 
-      
+    <div class="detailRow">
+        <span class="label">Uploader:</span>
+        <span class="value"><%= file.uploader.name ? file.uploader.name : file.uploader.email %></span>
+    </div>
 
     </div>
 

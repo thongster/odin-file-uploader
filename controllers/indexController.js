@@ -9,6 +9,9 @@ const showIndex = async (req, res) => {
     where: {
       folderId: null,
     },
+    include: {
+      uploader: true,
+    },
   });
   return res.render('index', { folders, files });
 };
@@ -26,6 +29,9 @@ const showFolder = async (req, res) => {
   const files = await prisma.file.findMany({
     where: {
       folderId: folder.id,
+    },
+    include: {
+      uploader: true,
     },
   });
 

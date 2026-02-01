@@ -104,6 +104,9 @@ const createFolder = async (req, res) => {
     where: {
       folderId: null,
     },
+    include: {
+      uploader: true,
+    },
   });
 
   if (!errors.isEmpty()) {
