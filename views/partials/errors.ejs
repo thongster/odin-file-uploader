@@ -1,9 +1,17 @@
-<% if (locals.status) { %>
-  <div class="">
-    <ul class="">
-      <% status.forEach((state) => { %>
-        <li class="\"><%= state.msg %></li>
-      <% }) %>
-    </ul>
+<% if (locals.status && status.length) { %>
+  <div class="xpError">
+    <div class="xpErrorInner">
+      <div class="xpErrorIcon">
+        <img src="/erroricon.png" alt="error">
+      </div>
+
+      <div class="xpErrorContent">
+        <ul>
+          <% status.forEach((state) => { %>
+            <li><%= state.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
   </div>
 <% } %>

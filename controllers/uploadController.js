@@ -44,17 +44,20 @@ const showUpload = async (req, res) => {
 };
 
 const upload = async (req, res) => {
+  const folders = await prisma.folder.findMany({});
   try {
     const file = req.file;
     if (!file) {
       return res.status(400).render('upload', {
         status: [{ msg: 'Something went wrong' }],
+        folders,
       });
     }
 
     if (file.size > 1000000) {
       return res.status(400).render('upload', {
         status: [{ msg: 'File size must be 1mb or less' }],
+        folders,
       });
     }
 
@@ -86,18 +89,29 @@ const upload = async (req, res) => {
     return res.redirect(req.body.folder === 'None' ? '/' : `/folders/${req.body.folder}`);
   } catch (error) {
     console.log(error);
+    const folders = await prisma.folder.findMany({});
     return res.status(500).render('upload', {
       status: [{ msg: 'Upload failed' }],
+      folders,
     });
   }
 };
 
 const createFolder = async (req, res) => {
   const errors = validationResult(req);
+  const folders = await prisma.folder.findMany({});
+  const files = await prisma.file.findMany({
+    where: {
+      folderId: null,
+    },
+  });
+
   if (!errors.isEmpty()) {
     return res.status(400).render('index', {
       status: errors.array(),
       formData: req.body,
+      folders,
+      files,
     });
   }
 

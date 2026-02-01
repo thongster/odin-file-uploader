@@ -422,6 +422,41 @@ input:focus {
   border-top: 1px solid var(--xp-border);
 }
 
+.xpError {
+  margin: 10px;
+  border: 1px solid #9C6A6A;
+  background: linear-gradient(#FFF1F1, #FFD6D6);
+  border-radius: 4px;
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1px 0 #D4A0A0;
+}
+
+.xpErrorInner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.xpErrorIcon img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.xpErrorContent ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.xpErrorContent li {
+  font-size: 12px;
+  color: #5A0000;
+  line-height: 1.4;
+}
+
 
 @media (max-width: 480px) {
   .container {
