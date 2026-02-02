@@ -18,7 +18,6 @@ const showIndex = async (req, res) => {
 
 const showFolder = async (req, res) => {
   if (!req.isAuthenticated()) {
-    console.log('in here');
     return res.redirect('/');
   }
 
@@ -43,4 +42,18 @@ const showFolder = async (req, res) => {
   return res.render('folders', { folder, files });
 };
 
-module.exports = { showIndex, showFolder };
+const renameFolder = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    console.log('in here');
+    return res.redirect('/');
+  }
+};
+
+const deleteFolder = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    console.log('in here');
+    return res.redirect('/');
+  }
+};
+
+module.exports = { showIndex, showFolder, renameFolder, deleteFolder };
