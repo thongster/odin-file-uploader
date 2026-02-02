@@ -16,19 +16,6 @@ createFolderBtn.addEventListener('click', () => {
   createFolderModal.style.display = 'none';
 });
 
-// measure header height to display newfolder modal nicely
-const header = document.querySelector('.header');
-const directoryBar = document.querySelector('.directoryBar');
-
-function updateModalOffset() {
-  const headerHeight = header.getBoundingClientRect().height;
-  const directoryBarHeight = directoryBar.getBoundingClientRect().height;
-  createFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
-}
-
-updateModalOffset();
-window.addEventListener('resize', updateModalOffset);
-
 // folder double click
 const allFolders = document.querySelectorAll('.folderLink');
 
@@ -92,9 +79,9 @@ if (renameThisFolderBtn) {
   });
 }
 
-renameThisFolderBtn.addEventListener('click', () => {
-  renameFolderModal.style.display = 'none';
-});
+// renameThisFolderBtn.addEventListener('click', () => {
+//   renameFolderModal.style.display = 'none';
+// });
 
 if (deleteThisFolderBtn) {
   deleteThisFolderBtn.addEventListener('click', () => {
@@ -103,6 +90,21 @@ if (deleteThisFolderBtn) {
   });
 }
 
-deleteThisFolderBtn.addEventListener('click', () => {
-  deleteFolderModal.style.display = 'none';
-});
+// deleteThisFolderBtn.addEventListener('click', () => {
+//   deleteFolderModal.style.display = 'none';
+// });
+
+// measure header height to display newfolder modal nicely
+const header = document.querySelector('.header');
+const directoryBar = document.querySelector('.directoryBar');
+
+function updateModalOffset() {
+  const headerHeight = header.getBoundingClientRect().height;
+  const directoryBarHeight = directoryBar.getBoundingClientRect().height;
+  createFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  renameFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  deleteFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+}
+
+updateModalOffset();
+window.addEventListener('resize', updateModalOffset);
