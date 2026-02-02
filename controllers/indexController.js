@@ -47,13 +47,42 @@ const renameFolder = async (req, res) => {
     console.log('in here');
     return res.redirect('/');
   }
+
+  const folder = await prisma.folder.findUnique({
+    where: {
+      ownerId_name: {
+        ownerId: req.user.id,
+        name: req.params.folder,
+      },
+    },
+  });
+
+  await prisma.folder.delete({
+    where: {
+      id: folder.id,
+    },
+  });
 };
 
 const deleteFolder = async (req, res) => {
   if (!req.isAuthenticated()) {
-    console.log('in here');
     return res.redirect('/');
   }
+
+  const folder = await prisma.folder.findUnique({
+    where: {
+      ownerId_name: {
+        ownerId: req.user.id,
+        name: req.params.folder,
+      },
+    },
+  });
+
+  await prisma.folder.delete({
+    where: {
+      id: folder.id,
+    },
+  });
 };
 
 module.exports = { showIndex, showFolder, renameFolder, deleteFolder };

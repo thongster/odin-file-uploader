@@ -3,7 +3,7 @@
         <% if (locals.folder) { %>
             <h3><%= folder.name %></h3>
         <% } %>
-        <form action="/folder/<%= folder.name %>/delete" method="POST" class="loginForm">
+        <form action="/folders/<%= folder.name %>/delete" method="POST" class="loginForm">
             <span>Are you sure you want to delete the <%= folder.name %> folder?</span>
             <div class="formActions">
                 <button type="submit" id="deleteFolderBtn">Delete Folder</button>
