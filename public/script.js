@@ -75,3 +75,34 @@ const backBtn = document.getElementById('backBtn');
 backBtn.addEventListener('click', () => {
   window.location.href = '/';
 });
+
+// disable/enable view of rename and delete modal
+const renameFolderModal = document.getElementById('renameFolderModal');
+const deleteFolderModal = document.getElementById('deleteFolderModal');
+const renameThisFolderBtn = document.getElementById('renameThisFolder');
+const deleteThisFolderBtn = document.getElementById('deleteThisFolder');
+
+let isRenameModalOpen = false;
+let isDeleteModalOpen = false;
+
+if (renameThisFolderBtn) {
+  renameThisFolderBtn.addEventListener('click', () => {
+    isRenameModalOpen = !isRenameModalOpen;
+    renameFolderModal.style.display = isRenameModalOpen ? 'flex' : 'none';
+  });
+}
+
+renameThisFolderBtn.addEventListener('click', () => {
+  renameFolderModal.style.display = 'none';
+});
+
+if (deleteThisFolderBtn) {
+  deleteThisFolderBtn.addEventListener('click', () => {
+    isDeleteModalOpen = !isDeleteModalOpen;
+    deleteFolderModal.style.display = isDeleteModalOpen ? 'flex' : 'none';
+  });
+}
+
+deleteThisFolderBtn.addEventListener('click', () => {
+  deleteFolderModal.style.display = 'none';
+});
