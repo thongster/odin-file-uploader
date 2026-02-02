@@ -17,6 +17,11 @@ const showIndex = async (req, res) => {
 };
 
 const showFolder = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    console.log('in here');
+    return res.redirect('/');
+  }
+
   const folder = await prisma.folder.findUnique({
     where: {
       ownerId_name: {
