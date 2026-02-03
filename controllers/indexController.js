@@ -84,4 +84,10 @@ const deleteFolder = async (req, res) => {
   });
 };
 
-module.exports = { showIndex, showFolder, renameFolder, deleteFolder };
+const downloadFile = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+};
+
+module.exports = { showIndex, showFolder, renameFolder, deleteFolder, downloadFile };
