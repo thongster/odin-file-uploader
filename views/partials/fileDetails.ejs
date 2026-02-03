@@ -36,12 +36,22 @@
     </div>
 
     <div class="detailFooter">
-      <a
-        href="/files/<%= file.id %>/download"
-        class="downloadBtn"
-      >
-        Download
-      </a>
+      <% if (locals.folder) { %> 
+        <a
+          href="/folders/<%= folder.name %>/<%= file.id %>/download"
+          class="downloadBtn"
+        >
+          Download
+        </a>
+      <% } else { %>
+        <a
+          href="/<%= file.id %>/download"
+          class="downloadBtn"
+        >
+          Download
+        </a>
+      <% } %>
+
       <button class="closeAction">OK</button>
     </div>
 
