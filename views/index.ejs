@@ -14,46 +14,47 @@
         <%- include("partials/directory.ejs") %>
         <%- include("partials/errors.ejs") %>
         <%- include("partials/createFolderModal.ejs") %>
+
+        <% if (!isAuthenticated) { %>
+            <%- include("partials/xpHome.ejs") %>
+        <% } %>
+
         <div class="folderContainer">
-            <% if (!isAuthenticated) { %>
-                <%- include("partials/xpHome.ejs") %>
-            <% } else { %>
-                <% if (locals.folders) { %>
-                    <% folders.forEach((folder) => { %>
-                        <a href="/folders/<%= folder.name %>" class="folderLink">
-                            <div class="folder">
-                                <img src="/folder.png" alt="<%= folder.name %>">
-                                <span class="folderName"><%= folder.name %></span>
-                            </div>
-                        </a>
-                    <% }) %>
-                <% } %>
-                <% if (locals.files) { %> 
-                    <% files.forEach((file) => { %>
-                        <%
-                            const ext = file.title.split('.').pop().toLowerCase();
-                            const imageTypes = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
-                            const textTypes = ['txt', 'md', 'doc', 'docx', 'rtf'];
+            <% if (locals.folders) { %>
+                <% folders.forEach((folder) => { %>
+                    <a href="/folders/<%= folder.name %>" class="folderLink">
+                        <div class="folder">
+                            <img src="/folder.png" alt="<%= folder.name %>">
+                            <span class="folderName"><%= folder.name %></span>
+                        </div>
+                    </a>
+                <% }) %>
+            <% } %>
+            <% if (locals.files) { %> 
+                <% files.forEach((file) => { %>
+                    <%
+                        const ext = file.title.split('.').pop().toLowerCase();
+                        const imageTypes = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+                        const textTypes = ['txt', 'md', 'doc', 'docx', 'rtf'];
 
-                            let icon = '/fileicon.png';
+                        let icon = '/fileicon.png';
 
-                            if (imageTypes.includes(ext)) {
-                                icon = '/photoicon.png';
-                            } else if (textTypes.includes(ext)) {
-                                icon = '/wordicon.png';
-                            } else {
-                                icon = '/fileicon.png'
-                            }
-                        %>
-                        <a href="" class="iconLink">
-                            <div class="file">
-                                <img src="<%= icon %>" alt="<%= file.title %>">
-                                <span class="fileName"><%= file.title %></span>
-                            </div>
-                        </a>
-                        <%- include("partials/fileDetails.ejs", { file }) %>
-                    <% }) %>
-                <% } %>
+                        if (imageTypes.includes(ext)) {
+                            icon = '/photoicon.png';
+                        } else if (textTypes.includes(ext)) {
+                            icon = '/wordicon.png';
+                        } else {
+                            icon = '/fileicon.png'
+                        }
+                    %>
+                    <a href="" class="iconLink">
+                        <div class="file">
+                            <img src="<%= icon %>" alt="<%= file.title %>">
+                            <span class="fileName"><%= file.title %></span>
+                        </div>
+                    </a>
+                    <%- include("partials/fileDetails.ejs", { file }) %>
+                <% }) %>
             <% } %>
         </div>
         <%- include("partials/footer.ejs") %>
