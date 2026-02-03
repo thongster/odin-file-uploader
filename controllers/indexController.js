@@ -48,20 +48,19 @@ const renameFolder = async (req, res) => {
     return res.redirect('/');
   }
 
-  const folder = await prisma.folder.findUnique({
+  const newFolder = await prisma.folder.update({
     where: {
       ownerId_name: {
         ownerId: req.user.id,
         name: req.params.folder,
       },
     },
-  });
-
-  await prisma.folder.delete({
-    where: {
-      id: folder.id,
+    data: {
+      name: req.body.folderName,
     },
   });
+
+  return res.redirect(`/folders/${newFolder.name}`);
 };
 
 const deleteFolder = async (req, res) => {
