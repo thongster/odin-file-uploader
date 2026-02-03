@@ -1,4 +1,5 @@
 const prisma = require('../lib/prisma');
+const path = require('path');
 
 const showIndex = async (req, res) => {
   if (!req.isAuthenticated()) {
@@ -88,6 +89,21 @@ const downloadFile = async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/');
   }
+
+  const file = await prisma.file.findUnique({
+    where: {
+      id: Number(req.params.fileId),
+    },
+  });
+
+  res.download(file.link, file.title, (err) => {
+    if (err) {
+      console.error('Download error:', err);
+      res.status(500).send('Error downloading the file.', file.link);
+    } else {
+      console.log('File successfully sent for download.', file.link);
+    }
+  });
 };
 
 module.exports = { showIndex, showFolder, renameFolder, deleteFolder, downloadFile };

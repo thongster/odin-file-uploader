@@ -7,7 +7,7 @@ indexRouter.get('/folders', indexController.showFolder);
 indexRouter.get('/folders/:folder', indexController.showFolder);
 indexRouter.post('/folders/:folder/rename', indexController.renameFolder);
 indexRouter.post('/folders/:folder/delete', indexController.deleteFolder);
-indexRouter.get('/:fileId/delete', indexController.downloadFile);
-indexRouter.get('/folders/:fileId/download', indexController.downloadFile);
+indexRouter.get('/:fileId/download', indexController.downloadFile);
+indexRouter.get('/folders/:folder/:fileId/download', indexController.downloadFile);
 
 module.exports = indexRouter;
