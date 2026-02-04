@@ -33,7 +33,7 @@ a {
 }
 
 html {
-    height: 100vh;
+  min-height: 100vh;
 }
 
 /* Body = Windows XP Desktop */
@@ -46,11 +46,12 @@ body {
   font-size: 13px;
   margin: 0;
 
+  padding: 2rem 0;
 }
 
 .container {
   max-width: 960px;
-  margin: 3rem auto;
+  margin: 0 auto;
   border: 2px solid #4B75C9;
   border-radius: 7px;
   background: linear-gradient(#F8FAFF, #E6EEF9);
@@ -58,7 +59,7 @@ body {
     inset 1px 1px 0 #FFFFFF,
     inset -1px -1px 0 #9DB9E8,
     0 5px 10px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -345,9 +346,8 @@ input:focus {
   gap: 1rem;
 
   padding: 1rem;
-  min-height: 350px;
-  max-height: 90%;
-
+  min-height: fit-content;
+  overflow-y: auto;
   align-content: start;
 }
 
@@ -715,8 +715,6 @@ input:focus {
 
 @media (max-width: 480px) {
   .container {
-    margin: 1rem;
-      min-height: 90%;
   max-height: 90%;
   }
 
@@ -725,8 +723,19 @@ input:focus {
   }
 }
 
+/* Tablets & small laptops */
 @media (max-width: 960px) {
+  body {
+    padding: 1.5rem;
+  }
+
   .container {
-    margin: 3rem 1rem;
+    margin: 0;
+    max-width: 100%;
+    height: calc(100vh - 3rem);
+  }
+
+  .headerInner {
+    padding: 0 0.75rem;
   }
 }
