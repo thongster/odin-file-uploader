@@ -714,14 +714,46 @@ input:focus {
 
 
 @media (max-width: 480px) {
-  .container {
-  max-height: 90%;
+  body {
+    padding: 0.75rem;
   }
 
-  .mainForm {
-    margin: 1rem;
+  .container {
+    border-radius: 5px;
+    height: calc(100vh - 1.5rem);
+  }
+
+  .header {
+    padding: 0.4rem 0;
+  }
+
+  .brand-text h1 {
+    font-size: 14px;
+  }
+
+  .brand-text p {
+    font-size: 11px;
   }
 }
+
+  .folderContainer {
+    grid-template-columns: repeat(auto-fill, 72px);
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .folder img,
+  .file img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .folderName,
+  .fileName {
+    font-size: 11px;
+    max-width: 72px;
+  }
+
 
 /* Tablets & small laptops */
 @media (max-width: 960px) {
