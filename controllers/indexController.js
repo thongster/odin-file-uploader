@@ -5,9 +5,14 @@ const showIndex = async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.render('index');
   }
-  const folders = await prisma.folder.findMany({});
+  const folders = await prisma.folder.findMany({
+    where: {
+      ownerId: req.user.id,
+    },
+  });
   const files = await prisma.file.findMany({
     where: {
+      uploaderId: req.user.id,
       folderId: null,
     },
     include: {

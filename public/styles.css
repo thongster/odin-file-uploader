@@ -764,7 +764,6 @@ input:focus {
   .container {
     margin: 0;
     max-width: 100%;
-    height: calc(100vh - 3rem);
   }
 
   .headerInner {
