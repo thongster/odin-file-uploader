@@ -20,7 +20,7 @@
         <% } %>
 
         <div class="folderContainer">
-            <% if ((!folders || folders.length === 0) && (!files || files.length === 0)) { %>
+            <% if ((!locals.folders || locals.folders.length === 0) && (!locals.files || locals.files.length === 0) && (isAuthenticated)) { %>
                 <%- include("partials/nothingHere.ejs") %>
             <% } %>
             <% if (locals.folders) { %>
