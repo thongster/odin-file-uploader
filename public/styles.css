@@ -747,6 +747,11 @@ input:focus {
     margin: 0;
     width: 100%;
   }
+
+  .mainForm {
+    padding: 0 1rem;
+  }
+
   /* Header content width */
   .headerInner {
     flex-direction: column;
@@ -758,16 +763,20 @@ input:focus {
     padding: 0.35rem 0;
   }
 
-  .header {
-    padding: 0.4rem 0;
-  }
-
   .brand-text h1 {
     font-size: 14px;
   }
 
   .brand-text p {
     font-size: 11px;
+  }
+
+  .pathBox {
+    height: 0.5rem;
+  }
+
+  .pathText {
+    display: none;
   }
 
   .folderContainer {
@@ -787,6 +796,10 @@ input:focus {
   .fileName {
     font-size: 11px;
     max-width: 72px;
+  }
+
+  .directoryInner {
+    justify-content: space-between;
   }
 
   .xpFooter {
