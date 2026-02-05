@@ -15,9 +15,11 @@ if (openFolderBtn) {
   });
 }
 
-createFolderBtn.addEventListener('click', () => {
-  createFolderModal.style.display = 'none';
-});
+if (createFolderBtn) {
+  createFolderBtn.addEventListener('click', () => {
+    createFolderModal.style.display = 'none';
+  });
+}
 
 // folder double click
 const allFolders = document.querySelectorAll('.folderLink');
@@ -63,9 +65,11 @@ allCloseBtns.forEach((btn) => {
 
 // back function
 const backBtn = document.getElementById('backBtn');
-backBtn.addEventListener('click', () => {
-  window.location.href = '/';
-});
+if (backBtn) {
+  backBtn.addEventListener('click', () => {
+    window.location.href = '/';
+  });
+}
 
 // disable/enable view of rename and delete modal
 const renameFolderModal = document.getElementById('renameFolderModal');
@@ -78,6 +82,8 @@ let isDeleteModalOpen = false;
 
 if (renameThisFolderBtn) {
   renameThisFolderBtn.addEventListener('click', () => {
+    isDeleteModalOpen = false;
+    deleteFolderModal.style.display = 'none';
     isRenameModalOpen = !isRenameModalOpen;
     renameFolderModal.style.display = isRenameModalOpen ? 'flex' : 'none';
   });
@@ -85,6 +91,8 @@ if (renameThisFolderBtn) {
 
 if (deleteThisFolderBtn) {
   deleteThisFolderBtn.addEventListener('click', () => {
+    isRenameModalOpen = false;
+    renameFolderModal.style.display = 'none';
     isDeleteModalOpen = !isDeleteModalOpen;
     deleteFolderModal.style.display = isDeleteModalOpen ? 'flex' : 'none';
   });
@@ -96,8 +104,13 @@ const directoryBar = document.querySelector('.directoryBar');
 
 function updateModalOffset() {
   const headerHeight = header.getBoundingClientRect().height;
-  const directoryBarHeight = directoryBar.getBoundingClientRect().height;
-  createFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  let directoryBarHeight;
+  if (directoryBar) {
+    directoryBarHeight = directoryBar.getBoundingClientRect().height;
+  }
+  if (createFolderModal) {
+    createFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  }
   if (renameFolderModal) {
     renameFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
   }
