@@ -18,11 +18,10 @@
         <% if (!isAuthenticated) { %>
             <%- include("partials/xpHome.ejs") %>
         <% } %>
-
+        <% if ((!locals.folders || locals.folders.length === 0) && (!locals.files || locals.files.length === 0) && (isAuthenticated)) { %>
+            <%- include("partials/nothingHere.ejs", {title: "Your account is empty"}) %>
+        <% } %>
         <div class="folderContainer">
-            <% if ((!locals.folders || locals.folders.length === 0) && (!locals.files || locals.files.length === 0) && (isAuthenticated)) { %>
-                <%- include("partials/nothingHere.ejs", {title: "Your account is empty"}) %>
-            <% } %>
             <% if (locals.folders) { %>
                 <% folders.forEach((folder) => { %>
                     <a href="/folders/<%= folder.name %>" class="folderLink">

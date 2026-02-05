@@ -338,13 +338,10 @@ input:focus {
     margin-bottom: 0.3rem;
 }
 
-
-
 .folderContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  grid-template-columns: repeat(auto-fit, 96px);
   gap: 1rem;
-
   padding: 1rem;
   min-height: fit-content;
   overflow-y: auto;

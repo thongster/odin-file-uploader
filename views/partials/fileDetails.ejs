@@ -43,8 +43,8 @@
         >
           Download
         </a>
-        <form action="/folders/<%= folder.name %>/<%= file.id %>/delete">
-          <button class="closeAction danger">Delete</button>
+        <form action="/folders/<%= folder.name %>/<%= file.id %>/delete" method="POST">
+          <button type="submit" class="closeAction danger">Delete</button>
         </form>
       <% } else { %>
         <a
@@ -53,8 +53,8 @@
         >
           Download
         </a>
-        <form action="/<%= file.id %>/delete">
-          <button class="closeAction danger">Delete</button>
+        <form action="/<%= file.id %>/delete" method="POST">
+          <button type="submit" class="closeAction danger">Delete</button>
         </form>
       <% } %>
 

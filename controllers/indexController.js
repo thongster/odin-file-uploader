@@ -113,4 +113,18 @@ const downloadFile = async (req, res) => {
   });
 };
 
-module.exports = { showIndex, showFolder, renameFolder, deleteFolder, downloadFile };
+const deleteFile = async (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+
+  await prisma.file.delete({
+    where: {
+      id: Number(req.params.fileId),
+    },
+  });
+
+  return res.redirect(req.get('referer') || '/');
+};
+
+module.exports = { showIndex, showFolder, renameFolder, deleteFolder, downloadFile, deleteFile };
