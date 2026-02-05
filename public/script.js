@@ -102,8 +102,12 @@ function updateModalOffset() {
   const headerHeight = header.getBoundingClientRect().height;
   const directoryBarHeight = directoryBar.getBoundingClientRect().height;
   createFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
-  renameFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
-  deleteFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  if (renameFolderModal) {
+    renameFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  }
+  if (deleteFolderModal) {
+    deleteFolderModal.style.top = `${headerHeight + directoryBarHeight + 10}px`;
+  }
 }
 
 updateModalOffset();
