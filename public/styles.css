@@ -802,6 +802,29 @@ input:focus {
     justify-content: space-between;
   }
 
+  .folderModal {
+    position: absolute;
+
+    right: 2px;
+    width: 80vw;
+
+    background: linear-gradient(
+      to bottom,
+      var(--xp-panel),
+      var(--xp-bg)
+    );
+
+    border: 2px solid var(--xp-border);
+    border-radius: 5px;
+
+    box-shadow:
+      inset 1px 1px 0 #FFFFFF,
+      inset -1px -1px 0 #9DB9E8,
+      0 2px 4px rgba(0, 0, 0, 0.35);
+
+    z-index: 9999;
+  }
+
   .xpFooter {
     display: flex;
     justify-content: center;

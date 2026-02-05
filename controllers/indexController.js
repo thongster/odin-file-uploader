@@ -88,6 +88,8 @@ const deleteFolder = async (req, res) => {
       id: folder.id,
     },
   });
+
+  return res.redirect('/');
 };
 
 const downloadFile = async (req, res) => {
