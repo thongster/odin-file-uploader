@@ -2,6 +2,9 @@ const openFolderBtn = document.getElementById('openCreateFolder');
 const createFolderBtn = document.getElementById('createFolderBtn');
 const createFolderModal = document.getElementById('createFolderModal');
 
+// detech touch screen
+const isTouch = window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+
 // disable/enable view of new folder modal
 let isFolderModalOpen = false;
 
@@ -24,7 +27,7 @@ allFolders.forEach((folder) => {
     e.preventDefault();
   });
 
-  folder.addEventListener('dblclick', () => {
+  folder.addEventListener(isTouch ? 'click' : 'dblclick', () => {
     window.location.href = folder.href;
   });
 });
@@ -38,7 +41,8 @@ allIcons.forEach((icon) => {
   });
 
   // open detail
-  icon.addEventListener('dblclick', (e) => {
+
+  icon.addEventListener(isTouch ? 'click' : 'dblclick', (e) => {
     e.preventDefault();
     const modal = icon.nextElementSibling;
     let isFileDetailOpen = false;
@@ -79,20 +83,12 @@ if (renameThisFolderBtn) {
   });
 }
 
-// renameThisFolderBtn.addEventListener('click', () => {
-//   renameFolderModal.style.display = 'none';
-// });
-
 if (deleteThisFolderBtn) {
   deleteThisFolderBtn.addEventListener('click', () => {
     isDeleteModalOpen = !isDeleteModalOpen;
     deleteFolderModal.style.display = isDeleteModalOpen ? 'flex' : 'none';
   });
 }
-
-// deleteThisFolderBtn.addEventListener('click', () => {
-//   deleteFolderModal.style.display = 'none';
-// });
 
 // measure header height to display newfolder modal nicely
 const header = document.querySelector('.header');
