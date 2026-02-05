@@ -565,12 +565,12 @@ input:focus {
 }
 
 /* Danger button (delete) */
-.navBtn.danger {
+.navBtn.danger, .danger {
   background: linear-gradient(to bottom, #fff0f0, #f3bcbc);
   border-color: #c26a6a;
 }
 
-.navBtn.danger:hover {
+.navBtn.danger:hover, .danger:hover {
   background: linear-gradient(to bottom, #ffe5e5, #f0a5a5);
 }
 
