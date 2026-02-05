@@ -712,6 +712,35 @@ input:focus {
   margin-top: 6px;
 }
 
+.xpNothingHere {
+  grid-column: 1 / -1;
+  margin-top: 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  color: #444;
+
+  padding: 24px 16px;
+}
+
+.xpNothingHere h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #003399;
+  margin-bottom: 6px;
+}
+
+.xpNothingHere p {
+  font-size: 12px;
+  color: #555;
+  max-width: 280px;
+  line-height: 1.4;
+}
+
 
 @media (max-width: 480px) {
   body {
@@ -734,7 +763,6 @@ input:focus {
   .brand-text p {
     font-size: 11px;
   }
-}
 
   .folderContainer {
     grid-template-columns: repeat(auto-fill, 72px);
@@ -753,6 +781,8 @@ input:focus {
     font-size: 11px;
     max-width: 72px;
   }
+}
+
 
 
 /* Tablets & small laptops */
