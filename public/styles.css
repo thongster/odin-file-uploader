@@ -755,10 +755,6 @@ input:focus {
 
 
 @media (max-width: 480px) {
-  .container {
-    margin: 0;
-    width: 100%;
-  }
 
   .mainForm {
     max-width: 240px;
