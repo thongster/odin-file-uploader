@@ -1,6 +1,7 @@
 const prisma = require('../lib/prisma');
 const multer = require('multer');
 const path = require('path');
+const supabase = require('../lib/supabase');
 
 // express validator
 const { body, validationResult, matchedData } = require('express-validator');
@@ -16,22 +17,12 @@ const validateFolderName = [
 ];
 
 // multer config
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const folder = req.body.folderId;
-
-    if (folder) {
-      cb(null, path.join(__dirname, `../uploads/${folder}`));
-    } else {
-      cb(null, path.join(__dirname, '../uploads'));
-    }
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
+const uploadMulter = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 1_000_000, // 1mb
   },
 });
-
-const uploadMulter = multer({ storage });
 
 const showUpload = async (req, res) => {
   if (!req.isAuthenticated()) {
@@ -76,14 +67,33 @@ const upload = async (req, res) => {
       folderId = folder.id;
     }
 
+    const fileExt = path.extname(file.originalname);
+    const fileName = `${crypto.randomUUID()}${fileExt}`;
+
+    const storagePath = folderId
+      ? `${req.user.id}/${folderId}/${fileName}`
+      : `${req.user.id}/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('uploads')
+      .upload(storagePath, file.buffer, {
+        contentType: file.mimetype,
+      });
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const { data } = supabase.storage.from('uploads').getPublicUrl(storagePath);
+
     await prisma.file.create({
       data: {
         title: file.originalname,
-        link: file.path,
+        link: data.publicUrl,
         mimeType: file.mimetype,
         size: file.size,
         uploaderId: req.user.id,
-        folderId: folderId,
+        folderId,
       },
     });
     return res.redirect(req.body.folder === 'None' ? '/' : `/folders/${req.body.folder}`);

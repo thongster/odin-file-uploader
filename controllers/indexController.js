@@ -1,5 +1,5 @@
 const prisma = require('../lib/prisma');
-const path = require('path');
+const supabase = require('../lib/supabase');
 
 const showIndex = async (req, res) => {
   if (!req.isAuthenticated()) {
@@ -103,14 +103,12 @@ const downloadFile = async (req, res) => {
     },
   });
 
-  res.download(file.link, file.title, (err) => {
-    if (err) {
-      console.error('Download error:', err);
-      res.status(500).send('Error downloading the file.', file.link);
-    } else {
-      console.log('File successfully sent for download.', file.link);
-    }
-  });
+  if (!file) {
+    return res.status(404).send('File not found');
+  }
+
+  // Cloud storage handles the download
+  res.redirect(file.link);
 };
 
 const deleteFile = async (req, res) => {
@@ -118,10 +116,25 @@ const deleteFile = async (req, res) => {
     return res.redirect('/');
   }
 
-  await prisma.file.delete({
+  const file = await prisma.file.findUnique({
     where: {
       id: Number(req.params.fileId),
     },
+  });
+
+  if (!file) return res.redirect('/');
+
+  const path = file.link.split('/object/public/')[1];
+
+  const { error } = await supabase.storage.from('uploads').remove([path]);
+
+  if (error) {
+    console.error('Supabase delete failed:', error);
+    return res.status(500).send('Failed to delete file');
+  }
+
+  await prisma.file.delete({
+    where: { id: file.id },
   });
 
   return res.redirect(req.get('referer') || '/');
