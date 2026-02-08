@@ -83,6 +83,11 @@ const deleteFolder = async (req, res) => {
     },
   });
 
+  await prisma.file.updateMany({
+    where: { folderId: folder.id },
+    data: { folderId: null },
+  });
+
   await prisma.folder.delete({
     where: {
       id: folder.id,
