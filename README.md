@@ -4,6 +4,8 @@ Odin File Uploader is a simple file storage app inspired by old-school desktop f
 
 The main goal of this project was to learn how authentication, databases, and cloud file storage work together in a real application.
 
+Live Demo: https://xpfileuploader.up.railway.app/
+
 ## Features
 
 - User authentication (login required)
