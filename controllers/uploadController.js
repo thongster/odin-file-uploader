@@ -2,6 +2,7 @@ const prisma = require('../lib/prisma');
 const multer = require('multer');
 const path = require('path');
 const supabase = require('../lib/supabase');
+const crypto = require('crypto');
 
 // express validator
 const { body, validationResult, matchedData } = require('express-validator');
@@ -29,13 +30,17 @@ const showUpload = async (req, res) => {
     return res.redirect('/');
   }
 
-  const folders = await prisma.folder.findMany({});
+  const folders = await prisma.folder.findMany({
+    where: { ownerId: req.user.id },
+  });
 
   return res.render('upload', { folders });
 };
 
 const upload = async (req, res) => {
-  const folders = await prisma.folder.findMany({});
+  const folders = await prisma.folder.findMany({
+    where: { ownerId: req.user.id },
+  });
   try {
     const file = req.file;
     if (!file) {
@@ -99,7 +104,9 @@ const upload = async (req, res) => {
     return res.redirect(req.body.folder === 'None' ? '/' : `/folders/${req.body.folder}`);
   } catch (error) {
     console.log(error);
-    const folders = await prisma.folder.findMany({});
+    const folders = await prisma.folder.findMany({
+      where: { ownerId: req.user.id },
+    });
     return res.status(500).render('upload', {
       status: [{ msg: 'Upload failed' }],
       folders,
@@ -109,7 +116,9 @@ const upload = async (req, res) => {
 
 const createFolder = async (req, res) => {
   const errors = validationResult(req);
-  const folders = await prisma.folder.findMany({});
+  const folders = await prisma.folder.findMany({
+    where: { ownerId: req.user.id },
+  });
   const files = await prisma.file.findMany({
     where: {
       folderId: null,
